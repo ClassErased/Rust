@@ -1,0 +1,13 @@
+/target
+
+#Ignore debug folder
+debug
+
+#Ignore json files
+.json
+
+#Ignore API keys
+.env
+
+#Ignore .TAG files
+.TAG
