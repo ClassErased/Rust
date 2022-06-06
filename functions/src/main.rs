@@ -1,8 +1,12 @@
+use std::io;
+
+//just playing around, worked out why it works, trying to test input
 fn main() {
-    print_labeled_measurement(5, 1);
+    let mut print_labeled_measurement = String::new();
+    io::stdin().read_line(&mut print_labeled_measurement).expect("Failed to read line");
 }
-//i dont have a clue why this works
-fn print_labeled_measurement(value: i32, vlue: i32) {
-    println!("The measurement is: {}", value * vlue);
+
+fn print_labeled_measurement(value: i32, value2: i32) {
+    println!("The measurement is: {}", value * value2);
 }
 
