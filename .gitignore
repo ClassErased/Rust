@@ -4,10 +4,10 @@
 debug
 
 #Ignore json files
-.json
+*.json
 
 #Ignore API keys
-.env
+*.env
 
 #Ignore .TAG files
-.TAG
+*.TAG
