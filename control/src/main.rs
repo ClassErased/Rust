@@ -1,5 +1,5 @@
 /* fn number() -> i32 {
-    3
+    30 / 10
 
 } */
 
@@ -8,7 +8,22 @@ fn main() {
 
     if number < 5 {
         println!("condition was true");
-    } else {
+    } 
+    else {
         println!("condition was false");
+    }
+}
+
+/*
+
+fn call() {
+    let x = number();
+
+    if number() > 7 {
+        println!("");
+    }
+    
+    else {
+        println!("");
     }
 }
