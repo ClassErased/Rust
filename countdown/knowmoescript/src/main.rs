@@ -26,7 +26,7 @@ fn countdown(mut input: i32) {
     input-=1; 
 
   }
-  if input ==  0 {
+  if input ==  1 {
     println!("time zone verify testing");
     let new_sys_time = SystemTime::now();
     let difference = new_sys_time.duration_since(sys_time)
