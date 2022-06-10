@@ -1,26 +1,10 @@
-use std::io;
+use std::time::SystemTime;
 
 fn main() {
-    let a = [1, 2, 3, 4, 5];
+    
+    let sys_time = SystemTime::now();
 
-    println!("Please enter an array index.");
+    println!("({})", sys_time);
+    print("test");
 
-    let mut index = String::new();
-
-    io::stdin()
-        .read_line(&mut index)
-        .expect("Failed to read line");
-
-    let index: usize = index
-        .trim()
-        .parse()
-        .expect("Index entered was not a number");
-
-    let element = a[index];
-
-    println!(
-        "The value of the element at index {} is: {}",
-        index, element
-    );
 }
-
