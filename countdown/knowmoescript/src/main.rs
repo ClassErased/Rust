@@ -13,28 +13,32 @@ use std::{thread, time::Duration};
 use std::time::SystemTime;
 
 fn countdown(mut input: i32) {
-  let sys_time = SystemTime::now();
+  let sys_time = SystemTime::now(); // Read the time of the system to allow for diff later
   let start = input;
-  thread::sleep(Duration::from_millis(1000));
-  while input > 0 {
+  thread::sleep(Duration::from_millis(993));
+  while input > 1 {
     
     if start != input {
-      println!("{}", input);
-      thread::sleep(Duration::from_millis(1000));
+      println!("{} seconds remaining", input);
+      thread::sleep(Duration::from_millis(993));
     } 
     
     input-=1; 
 
   }
   if input ==  1 {
-    println!("time zone verify testing");
-    let new_sys_time = SystemTime::now();
-    let difference = new_sys_time.duration_since(sys_time)
+    thread::sleep(Duration::from_millis(993));
+   
+    // println!("ADD TIME ZONE READING AND PRINT CURRENT TIME dd/mm/yyyy hh:mm:ss");
+     
+    let new_sys_time = SystemTime::now(); // Take the second system time reading to diff
+    let difference = new_sys_time.duration_since(sys_time) // Compare two readings of sys_time to get difference
+    // Ideally need to round this output down as computer seems to lose a minimum of 0.007s each cycle, or work out why its losing this time and optimize
         .expect("Clock may have gone backwards");
     println!("{difference:?} have passed since execution!");
   // Add function to check local time and print the time +/- 1
   // when I work out how to do it lol
-  // Currently this attempts to display how long (in seconds) since the script was run
+  // Currently this displays how long (in seconds) since the script was run
   }
 }
 
