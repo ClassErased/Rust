@@ -1,17 +1,11 @@
 // dumb ass countdown script
 // Adapted by nomo and classerased
-
-
-// Using this as my base to build a countdown program I can pull for Windows and Linux - ab
-// Which is probably going to require an OS check, unless I find a solution that works on both
-// Or make two scripts
-
-
 use std::io;
 use std::{thread, time::Duration};
-// use chrono::prelude::*; dependency used for time reading and printing [chrono = "0.4"]
+use chrono::prelude::*;
 use std::time::SystemTime;
 
+// Function that counts the clock down from the number that user inputs, additional functionality explained.
 fn countdown(mut input: i32) {
   let sys_time = SystemTime::now(); // Read the time of the system to allow for diff later
   let start = input;
@@ -26,20 +20,18 @@ fn countdown(mut input: i32) {
   }
   if input ==  1 {
     thread::sleep(Duration::from_millis(1000));
-   
-    // println!("ADD TIME ZONE READING AND PRINT CURRENT TIME dd/mm/yyyy hh:mm:ss");
-     
-    let new_sys_time = SystemTime::now(); // Take the second system time reading
-    let difference = new_sys_time.duration_since(sys_time) // do diff on system time readings
-    // Ideally need to round this output down
+    
+    // Creates two time variables, one from system clock and another from system local timezone
+    let new_sys_time = SystemTime::now();
+    let timenow: DateTime<Local> = Local::now();
+    
+    let difference = new_sys_time.duration_since(sys_time) // do diff on system clock readings
         .expect("Clock may have gone backwards");
-    println!("{difference:?} have passed since execution!");
-  // Add function to check local time and print the time +/- 1
-  // when I work out how to do it lol
-  // Currently this displays how long (in seconds) since the script was run
+    println!("{difference:?} have passed since execution and the time is now {}", timenow);
   }
 }
 
+// Beginning of program and input handling
 fn input_control() -> i32 {
     let reader = io::stdin();
     let mut input_text = String::new();
@@ -60,17 +52,7 @@ fn input_control() -> i32 {
   return input_int;
 }
 
-
+// Main function
 fn main() {
   countdown(input_control());
 }
-
-/* using chrono dependency to print
-
-use chrono::Utc;
-use chrono::Local;
-
-fn main() {
-    println!("UTC time: {}", Utc::now());
-    println!("Local time {}", Local::now());
-} */
